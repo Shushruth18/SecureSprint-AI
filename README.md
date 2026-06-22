@@ -1,36 +1,181 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛡️ SecureSprint AI
 
-## Getting Started
+### Hermes-Powered AI Security Operations Center for GitHub Repositories
 
-First, run the development server:
+SecureSprint AI is an AI-driven Security Operations Center (SOC) that audits GitHub repositories, detects vulnerabilities, and generates developer-friendly security reports with risks and remediation guidance.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+The platform combines automated security scanners, AI-powered analysis, and isolated Daytona sandboxes to safely analyze untrusted repositories.
+
+---
+
+##  Features
+
+### Repository Intelligence
+
+* GitHub Repository URL Input
+* Repository Metadata Detection
+* Language Identification
+* Framework Identification
+* Security Scanner Recommendation
+
+### Security Analysis
+
+* Vulnerability Detection
+* Dependency Auditing
+* Security Risk Assessment
+* Severity Classification
+
+### AI Security Reports
+
+* Human-Readable Findings
+* Risk Explanations
+* Remediation Recommendations
+* Security Score Generation
+
+### Dashboard
+
+* Repository Intelligence Panel
+* Security Score Cards
+* Live Scan Progress
+* AI Security Report View
+
+---
+
+##  Architecture
+
+```text
+User
+ ↓
+Next.js Dashboard
+ ↓
+Backend API
+ ↓
+Hermes AI Agent
+ ↓
+Daytona Sandbox
+ ↓
+Security Scanners
+(Bandit, Semgrep, pip-audit)
+ ↓
+AI Security Report
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+##  Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Frontend
 
-## Learn More
+* Next.js
+* TypeScript
+* Tailwind CSS
 
-To learn more about Next.js, take a look at the following resources:
+### Backend
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* Next.js API Routes
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### AI Agent
 
-## Deploy on Vercel
+* Hermes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Sandbox
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* Daytona
+
+### Security Tools
+
+* Bandit
+* Semgrep
+* pip-audit
+
+---
+
+##  Current Progress
+
+### Completed
+
+* [x] SecureSprint AI Dashboard
+* [x] Repository URL Input
+* [x] API Integration
+* [x] Repository Intelligence Panel
+* [x] Security Score Dashboard
+* [x] AI Security Report UI
+* [x] Frontend ↔ Backend Communication
+
+### In Progress
+
+* [ ] Dynamic GitHub Repository Processing
+* [ ] Real Vulnerability Scanning
+* [ ] Daytona Sandbox Integration
+* [ ] Hermes Security Analysis
+* [ ] Deployment Pipeline
+
+---
+
+##  Roadmap
+
+### Phase 1
+
+* Dashboard Development
+* API Integration
+* Mock Security Reports
+
+### Phase 2
+
+* GitHub Repository Analysis
+* Dynamic Repository Intelligence
+* Real Scanner Integration
+
+### Phase 3
+
+* Daytona Sandbox Execution
+* Hermes AI Security Analyst
+* Automated Security Reports
+
+### Phase 4
+
+* Deployment
+* Multi-Language Support
+* Enterprise Features
+
+---
+
+##  Future Enhancements
+
+* Docker Image Scanning
+* Secret Detection
+* Pull Request Security Reviews
+* OWASP Compliance Reports
+* Slack / Discord Notifications
+* Exportable Security Reports
+
+---
+
+##  Screenshots
+
+### Landing Page
+
+(Add Screenshot)
+
+### Repository Intelligence
+
+(Add Screenshot)
+
+### Security Report
+
+(Add Screenshot)
+
+---
+
+##  Author
+
+**Shushruth Lohith Kumar**
+
+Master's Student – Digital Engineering
+Otto-von-Guericke University Magdeburg
+
+---
+
+##  License
+
+MIT License
