@@ -24,33 +24,44 @@ type Report = {
   repository: string;
   language: string;
   framework: string;
+  scanners: string[];
   findings: Finding[];
 };
 
 export default function Home() {
   const [repoUrl, setRepoUrl] = useState("");
   const [scanned, setScanned] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [report, setReport] = useState<Report | null>(null);
 
   const handleScan = async () => {
-    if (!repoUrl.trim()) {
-      alert("Please enter a GitHub repository URL");
-      return;
-    }
+  if (!repoUrl.trim()) {
+    alert("Please enter a GitHub repository URL");
+    return;
+  }
 
-    const response = await fetch("/api/audit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ repoUrl }),
-    });
+  setScanned(false);
+  setLoading(true);
 
-    const data = await response.json();
+  await new Promise((resolve) => setTimeout(resolve, 2500));
 
-    setReport(data);
-    setScanned(true);
-  };
+  const response = await fetch("/api/audit", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      repoUrl,
+    }),
+  });
+
+  const data = await response.json();
+
+  setReport(data);
+
+  setLoading(false);
+  setScanned(true);
+};
 
   const criticalCount =
     report?.findings.filter((f) => f.severity === "Critical").length ?? 0;
@@ -88,7 +99,7 @@ export default function Home() {
             onClick={handleScan}
             className="w-full rounded-xl bg-cyan-400 px-6 py-4 font-semibold text-slate-950 transition hover:bg-cyan-300"
           >
-            Run Security Audit
+            {loading ? "Scanning..." : "Run Security Audit"}
           </button>
         </div>
 
@@ -122,6 +133,22 @@ export default function Home() {
           </div>
         </div>
 
+        {loading && (
+          <div className="mt-10 rounded-2xl border border-cyan-500/20 bg-slate-900 p-6 text-left">
+            <h2 className="mb-4 text-xl font-bold text-cyan-300">
+              SecureSprint AI Analysis
+            </h2>
+
+            <div className="space-y-3 text-slate-300">
+              <p>🔍 Cloning Repository...</p>
+              <p>🔎 Analyzing Repository Structure...</p>
+              <p>🛡️ Selecting Security Scanners...</p>
+              <p>⚡ Running Vulnerability Analysis...</p>
+              <p>🤖 Hermes Generating Security Report...</p>
+            </div>
+           </div>
+        )}
+        
         {scanned && report && (
           <div className="mt-12">
             <div className="mb-8 rounded-2xl border border-slate-800 bg-slate-900 p-6">
@@ -154,7 +181,7 @@ export default function Home() {
                 <div className="rounded-xl bg-slate-950 p-4">
                   <p className="text-sm text-slate-400">Scanners</p>
                   <p className="mt-2 font-semibold text-white">
-                    Bandit, Semgrep, pip-audit
+                    {report?.scanners?.join(", ")}
                   </p>
                 </div>
               </div>
